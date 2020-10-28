@@ -1,0 +1,21 @@
+.dropdown-toggle , .dropdown-item {
+    cursor: pointer;
+}
+
+.divider{
+    width:20px;
+    height:auto;
+    display:inline-block;
+}
+
+.user-name {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+}
+
+.user-color {
+    color: green;
+    font-weight: 900;
+}

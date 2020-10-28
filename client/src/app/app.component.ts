@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { User } from './_models/User';
+import { AccountService } from './_services/account.service';
 
 @Component({
   selector: 'app-root',
@@ -10,18 +12,14 @@ export class AppComponent implements OnInit{
   title = 'Task Manager Tool';
   users: any;
 
-  constructor(private http: HttpClient) {}
+  constructor(private accountService: AccountService) {}
 
   ngOnInit(): void {
-    this.getAppUsers();
+    this.setCurrentUser();
   }
 
-  getAppUsers(): void {
-    this.http.get('https://localhost:5001/api/appusers').subscribe(response => {
-      console.log(response);
-      this.users = response;
-    }, error => {
-      console.log(error);
-    });
+  setCurrentUser(): void {
+    const user: User = JSON.parse(localStorage.getItem('app_user'));
+    this.accountService.setCurrentUser(user);
   }
 }

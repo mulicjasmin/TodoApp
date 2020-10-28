@@ -45,6 +45,10 @@ namespace API
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                using (var scope = 
+                    app.ApplicationServices.CreateScope())
+                using (var context = scope.ServiceProvider.GetService<DataContext>())
+                    context.Database.Migrate();
             }
 
             app.UseHttpsRedirection();

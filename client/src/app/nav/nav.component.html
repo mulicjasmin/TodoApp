@@ -1,0 +1,47 @@
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-warning">
+    <div class="container">
+        <a class="navbar-brand" routerLink='/' routerLinkActive='active'>Task Manager Tool</a>
+          <ul class="navbar-nav mr-auto">
+            <ng-container *ngIf="accountService.currentUser$ | async">
+              <li class="nav-item">
+                <a class="nav-link" routerLink='/tasks' routerLinkActive='active'>Task List</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink='/lists' routerLinkActive='active'>Lists</a>
+              </li>
+            </ng-container>
+          </ul>
+
+          <button *ngIf="accountService.currentUser$ | async" 
+            class="btn btn-success my-2 my-sm-0" 
+            (click)="logout()">
+            Logout
+          </button>
+
+          <form *ngIf="(accountService.currentUser$ | async) === null" 
+            #loginForm="ngForm" 
+            class="form-inline mt-2 mt-md-0" 
+            (ngSubmit)="login()" 
+            autocomplete="off">
+            <input class="form-control mr-sm-2" 
+              name="username"
+              [(ngModel)]="model.username"
+              type="text" 
+              placeholder="Username">
+            <input class="form-control mr-sm-2" 
+              name="password"
+              [(ngModel)]="model.password"
+              type="password" 
+              placeholder="Password">
+            <button class="btn btn-success my-2 my-sm-0" 
+              type="submit">
+              Login
+            </button>
+          </form>
+          <div class="divider"></div>
+          <div *ngIf="(accountService.currentUser$ | async) as user">
+            Welcome <span class="user-color">{{user.username | titlecase}}</span> !
+          </div>
+          
+    </div>
+  </nav>

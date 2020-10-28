@@ -1,0 +1,23 @@
+.table-header {
+    height: 50px;
+    COLOR: white;
+    background-color: orange;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    margin-bottom: 4px;
+    margin-right: 2%;
+}
+
+.table-element {
+    margin-right: 2%;
+    height: 200px;
+}
+
+.table-header-divider {
+    height: 5px;
+    background-color: whitesmoke;
+    margin-right: 2%;
+    margin-bottom: 4px;
+}

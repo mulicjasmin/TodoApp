@@ -6,11 +6,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace API.Data.Migrations
+namespace API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20201004132525_UserEmailAdded")]
-    partial class UserEmailAdded
+    [Migration("20201006163538_UserEntityAdded")]
+    partial class UserEntityAdded
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -39,6 +39,40 @@ namespace API.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("API.Entities.Task", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("AppUserId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("name")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("status")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("timeSpent")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppUserId");
+
+                    b.ToTable("Tasks");
+                });
+
+            modelBuilder.Entity("API.Entities.Task", b =>
+                {
+                    b.HasOne("API.Entities.AppUser", "User")
+                        .WithMany("Tasks")
+                        .HasForeignKey("AppUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

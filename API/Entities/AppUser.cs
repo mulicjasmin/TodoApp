@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace API.Entities
 {
     public class AppUser
@@ -7,5 +9,6 @@ namespace API.Entities
         public string Email { get; set; }
         public byte[] PasswordHash { get; set; }
         public byte[] PasswordSalt { get; set; }
+        //public ICollection<Task> Tasks { get; set; }
     }
 }

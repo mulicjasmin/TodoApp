@@ -1,0 +1,49 @@
+<ng-template #itemTemplate let-item="item" let-index="index">
+    <span>{{item.value.name}}</span>
+</ng-template>
+
+<div class="row">
+    <div class="col-xs-6 col-6 col-md-5 col-lg-3 table-header">OPEN</div>
+    <div class="col-xs-6 col-6 col-md-5 col-lg-3 table-header">IN PROGRESS</div>
+    <div class="col-xs-6 col-6 col-md-5 col-lg-3 table-header">COMPLETED</div>
+</div>
+<div class="row">
+    <div class="col-xs-6 col-6 col-md-5 col-lg-3 table-header-divider"></div>
+    <div class="col-xs-6 col-6 col-md-5 col-lg-3 table-header-divider"></div>
+    <div class="col-xs-6 col-6 col-md-5 col-lg-3 table-header-divider"></div>
+</div>
+<div class="row">
+  <div class="col-xs-6 col-6 col-md-5 col-lg-3 table-element">
+    <bs-sortable
+      [(ngModel)]="tasksOpened"
+      [itemTemplate]="itemTemplate"
+      itemClass="sortable-item"
+      itemActiveClass="sortable-item-active"
+      placeholderItem="Drag here"
+      placeholderClass="placeholderStyle"
+      wrapperClass="sortable-wrapper"
+    ></bs-sortable>
+  </div>
+  <div class="col-xs-6 col-6 col-md-5 col-lg-3 table-element">
+    <bs-sortable
+      [(ngModel)]="tasksInProgress"
+      [itemTemplate]="itemTemplate"
+      itemClass="sortable-item"
+      itemActiveClass="sortable-item-active"
+      placeholderItem="Drag here"
+      placeholderClass="sortable-item"
+      wrapperClass="sortable-wrapper"
+    ></bs-sortable>
+  </div>
+  <div class="col-xs-6 col-6 col-md-5 col-lg-3 table-element">
+    <bs-sortable
+      [(ngModel)]="tasksCompleted"
+      [itemTemplate]="itemTemplate"
+      itemClass="sortable-item"
+      itemActiveClass="sortable-item-active"
+      placeholderItem="Drag here"
+      placeholderClass="sortable-item"
+      wrapperClass="sortable-wrapper"
+    ></bs-sortable>
+  </div>
+</div>
